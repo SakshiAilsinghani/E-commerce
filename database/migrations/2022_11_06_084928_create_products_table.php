@@ -15,6 +15,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description', 1000);
+            $table->integer('quantity')->unsigned();
+            $table->unsignedTinyInteger('status')->default(\App\Models\Product::UNAVAILABLE_PRODUCT);
+            $table->string('image');
+            $table->unsignedBigInteger('seller_id');
+            $table->timestamps();
+
             $table->timestamps();
         });
     }
