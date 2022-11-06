@@ -23,7 +23,12 @@ return new class extends Migration
             $table->unsignedBigInteger('seller_id');
             $table->timestamps();
 
-            $table->timestamps();
+            // $table->timestamps();
+            $table->foreign('seller_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
         });
     }
 
