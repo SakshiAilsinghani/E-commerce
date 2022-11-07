@@ -21,6 +21,7 @@ class UserFactory extends Factory
     {
         $verified = $this->faker->randomElement([User::VERIFIED_USER, User::UNVERIFIED_USER]);
         return [
+            'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
