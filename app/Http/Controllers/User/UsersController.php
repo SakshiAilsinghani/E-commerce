@@ -113,10 +113,13 @@ class UsersController extends Controller
         }
 
         if($request->has('email')) {
-            $user->email = $request->email;
-            $user->verified = User::UNVERIFIED_USER;
-            $user->verification_token = User::generateVerficationCode();
-            $user->admin = User::REGULAR_USER;
+            if($request->email != $user->email) {
+                $user->email = $request->email;
+                $user->verified = User::UNVERIFIED_USER;
+                $user->verification_token = User::generateVerificationCode();
+                $user->admin = User::REGULAR_USER;
+            }
+
         }
 
         if($request->has('admin')) {
