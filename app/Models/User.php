@@ -71,4 +71,20 @@ class User extends Authenticatable
         return Str::random(40);
     }
 
+    
+    public function getNameAttribute()
+    {
+        return ucwords($this->attributes['name']);
+    }
+
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = strtolower($name);
+    }
+    public function setEmailAttribute($email)
+    {
+        $this->attributes['email'] = strtolower($email);
+    }
+
+
 }
