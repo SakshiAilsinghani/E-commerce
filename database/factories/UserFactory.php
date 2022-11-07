@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'verified' => $verified,
-            'verification_token' => $verified === User::VERIFIED_USER ? null : User::generateVerficationCode(),
+            'verification_token' => $verified === User::VERIFIED_USER ? null : User::generateVerificationCode(),
             'admin' => $verified === User::VERIFIED_USER ? $this->faker->randomElement([User::ADMIN_USER, User::REGULAR_USER]) : User::REGULAR_USER,
 
             
