@@ -15,3 +15,4 @@ Route::resource('buyers.products', \App\Http\Controllers\Buyer\BuyerProductsCont
 Route::resource('buyers.sellers', \App\Http\Controllers\Buyer\BuyerSellersController::class)->only(['index']);
 Route::resource('buyers.categories', \App\Http\Controllers\Buyer\BuyerCategoriesController::class)->only(['index']);
 Route::resource('categories.products', \App\Http\Controllers\Category\CategoryProductsController::class)->only(['index']);
+Route::resource('categories.sellers', \App\Http\Controllers\Category\CategorySellersController::class)->only(['index']);
