@@ -20,3 +20,4 @@ Route::resource('categories.buyers', \App\Http\Controllers\Category\CategoryBuye
 
 Route::resource('sellers.categories', \App\Http\Controllers\Seller\SellerCategoriesController::class)->only(['index']);
 Route::resource('sellers.buyers', \App\Http\Controllers\Seller\SellerBuyersController::class)->only(['index']);
+Route::resource('sellers.products', \App\Http\Controllers\Seller\SellerProductsController::class)->except(['create', 'edit', 'show']);
