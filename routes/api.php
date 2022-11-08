@@ -9,3 +9,4 @@ Route::resource('sellers', \App\Http\Controllers\Seller\SellersController::class
 Route::resource('products', \App\Http\Controllers\Product\ProductsController::class)->only(['index', 'show']);
 Route::resource('transactions', \App\Http\Controllers\Transaction\TransactionsController::class)->only(['index', 'show']);
 Route::resource('transactions.categories', \App\Http\Controllers\Transaction\TransactionCategoryController::class)->only(['index']); 
+Route::resource('transactions.sellers', \App\Http\Controllers\Transaction\TransactionSellerController::class)->only(['index']); 
