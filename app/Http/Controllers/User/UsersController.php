@@ -69,7 +69,9 @@ class UsersController extends ApiController
      */
     public function show(User $user)
     {
-        $user = User::findOrFail($user);
+      
+        // $user = User::findOrFail($user);
+        // dd($user);
         return $this->showOne($user);
 
     }
@@ -94,7 +96,7 @@ class UsersController extends ApiController
      */
     public function update(Request $request, User $user)
     {
-        $user = User::findOrFail($user);
+        // $user = User::findOrFail($user);
 
         $rules = [
             'email' => 'email|unique:users,email,'.$user->id,
@@ -147,7 +149,7 @@ class UsersController extends ApiController
      */
     public function destroy(User $user)
     {
-        $user = User::findOrFail($user);
+      
         $user->delete();
         return $this->showOne($user, 204);
 

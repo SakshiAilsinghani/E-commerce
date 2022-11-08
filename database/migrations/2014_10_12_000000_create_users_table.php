@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('verified')->default(\App\Models\User::UNVERIFIED_USER);
             $table->string('verification_token')->nullable();
             $table->boolean('admin')->default(\App\Models\User::REGULAR_USER);
+            $table->softDeletes();
 
             $table->rememberToken();
             $table->timestamps();
