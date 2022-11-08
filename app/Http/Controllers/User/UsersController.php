@@ -120,6 +120,7 @@ class UsersController extends Controller
                 $user->admin = User::REGULAR_USER;
             }
 
+
         }
 
         if($request->has('admin')) {
