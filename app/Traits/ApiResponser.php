@@ -25,5 +25,6 @@ trait ApiResponser
         $responseParams = ['data' => $model];
         return $this->successResponse($responseParams, $statusCode);
     }
+
 }
 

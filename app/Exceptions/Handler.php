@@ -66,11 +66,6 @@ class Handler extends ExceptionHandler
             if($errorCode === self::FOREIGN_KEY_VIOLATION_CODE) {
                 return $this->errorResponse("Cannot remove this resource permanently, as it has some other resourced related to it.", 409);
             }
-
-            if($errorCode === self::COLUMN_NOT_FOUND_VIOLATION_CODE) {
-                return $this->errorResponse("Column Used in specified operation not found!", 409);
-            }
-
         }
 
         if(config('app.debug')) {

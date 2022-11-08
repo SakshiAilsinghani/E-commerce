@@ -17,7 +17,7 @@ class CategoriesController extends  ApiController
     public function index() :JsonResponse
     {
         $categories= Category::all();
-        dd($categories);
+        // dd($categories);
         return $this->showAll($categories);
     }
 
