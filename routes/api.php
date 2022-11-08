@@ -18,3 +18,4 @@ Route::resource('categories.products', \App\Http\Controllers\Category\CategoryPr
 Route::resource('categories.sellers', \App\Http\Controllers\Category\CategorySellersController::class)->only(['index']);
 Route::resource('categories.buyers', \App\Http\Controllers\Category\CategoryBuyersController::class)->only(['index']);
 
+Route::resource('sellers.categories', \App\Http\Controllers\Seller\SellerCategoriesController::class)->only(['index']);
