@@ -18,7 +18,9 @@ class BuyerSellersController extends ApiController
         ->with('product.seller')
         ->get()
         ->pluck('product.seller')
-        ->unique();
+        ->unique()
+        ->values();
+;
     return $this->showAll($sellers);
 }
 
