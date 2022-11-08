@@ -14,6 +14,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+    
+
     const VERIFIED_USER = true;
     const UNVERIFIED_USER = false;
 
@@ -42,9 +44,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+        'deleted_at',
         'password',
         'remember_token',
         'verification_token'
+        
 
     ];
 

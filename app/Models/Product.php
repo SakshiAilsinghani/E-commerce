@@ -12,6 +12,11 @@ class Product extends Model
     const UNAVAILABLE_PRODUCT = 0;
     const AVAILABLE_PRODUCT = 1;
 
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
     protected $fillable = [
         'name',
         'description',

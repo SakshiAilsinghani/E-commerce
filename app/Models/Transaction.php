@@ -15,6 +15,11 @@ class Transaction extends Model
         'product_id'
     ];
 
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
     public function product()
     {
         return $this->belongsTo(Product::class);

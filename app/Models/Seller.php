@@ -11,6 +11,11 @@ class Seller extends User
     use HasFactory;
     protected $table = "users";
 
+    protected $hidden = [
+        'deleted_at',
+    ];
+
+
     protected static function boot()
     {
         parent::boot();

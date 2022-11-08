@@ -9,6 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Category extends Model
 {
     use HasFactory,SoftDeletes;
+
+    protected $hidden = [
+        'deleted_at',
+    ];
+
     protected $fillable = [
         'name',
         'description'
