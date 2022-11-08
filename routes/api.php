@@ -12,3 +12,4 @@ Route::resource('transactions.categories', \App\Http\Controllers\Transaction\Tra
 Route::resource('transactions.sellers', \App\Http\Controllers\Transaction\TransactionSellerController::class)->only(['index']); 
 Route::resource('buyers.transactions', \App\Http\Controllers\Buyer\BuyerTransactionController::class)->only(['index']);
 Route::resource('buyers.products', \App\Http\Controllers\Buyer\BuyerProductsController::class)->only(['index']);
+Route::resource('buyers.sellers', \App\Http\Controllers\Buyer\BuyerSellersController::class)->only(['index']);
