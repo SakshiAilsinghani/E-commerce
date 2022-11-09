@@ -22,3 +22,6 @@ Route::resource('sellers.categories', \App\Http\Controllers\Seller\SellerCategor
 Route::resource('sellers.buyers', \App\Http\Controllers\Seller\SellerBuyersController::class)->only(['index']);
 Route::resource('sellers.products', \App\Http\Controllers\Seller\SellerProductsController::class)->except(['create', 'edit', 'show']);
 Route::resource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
+Route::resource('products.buyers', \App\Http\Controllers\Product\ProductBuyersController::class)->only(['index']);
+
+
