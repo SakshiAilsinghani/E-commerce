@@ -1,10 +1,11 @@
 @component('mail::message')
-# Introduction
+# Hello {{ $user->name }}
 
-The body of your message.
+Thank you for creating account with us. Please take a moment to verify yourself!
 
-@component('mail::button', ['url' => ''])
-Button Text
+@component('mail::button', ['url' => route('verify', $user->verification_token)])
+    Verify
+
 @endcomponent
 
 Thanks,<br>
