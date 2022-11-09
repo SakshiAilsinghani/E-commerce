@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    // 'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'products'),
 
     /*
     |--------------------------------------------------------------------------
@@ -43,6 +44,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+
+        'products' => [
+            'driver' => 'local',
+            'root' => public_path('img'),
+            'visibility' => 'public'
+        ],
+
 
         's3' => [
             'driver' => 's3',
