@@ -63,12 +63,12 @@ class User extends Authenticatable
 
     public function isVerified()
     {
-        return $this->verified === self::VERIFIED_USER;
+        return (bool)$this->verified === self::VERIFIED_USER;
     }
 
     public function isAdmin()
     {
-        return $this->admin === self::ADMIN_USER;
+        return (bool)$this->admin === self::ADMIN_USER;
     }
 
     public static function generateVerificationCode()
