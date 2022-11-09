@@ -28,3 +28,4 @@ Route::resource('products.buyers.transactions', \App\Http\Controllers\Product\Pr
 
 Route::resource('products.categories', \App\Http\Controllers\Product\ProductCategoriesController::class)->only(['index', 'update', 'destroy']);
 Route::get('users/verify/{token}', [\App\Http\Controllers\User\UsersController::class, 'verify'])->name('verify');
+Route::get('users/{user}/resend', [\App\Http\Controllers\User\UsersController::class, 'resend'])->name('resend');

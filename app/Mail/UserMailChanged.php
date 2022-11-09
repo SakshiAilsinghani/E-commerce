@@ -31,4 +31,6 @@ class UserMailChanged extends Mailable
     public function build()
     {
         return $this->markdown('emails.confirm')->subject('Verify Account!');
+    }
+
 }
