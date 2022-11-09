@@ -23,5 +23,4 @@ Route::resource('sellers.buyers', \App\Http\Controllers\Seller\SellerBuyersContr
 Route::resource('sellers.products', \App\Http\Controllers\Seller\SellerProductsController::class)->except(['create', 'edit', 'show']);
 Route::resource('products.transactions', \App\Http\Controllers\Product\ProductTransactionsController::class)->only(['index']);
 Route::resource('products.buyers', \App\Http\Controllers\Product\ProductBuyersController::class)->only(['index']);
-
-
+Route::resource('products.categories', \App\Http\Controllers\Product\ProductCategoriesController::class)->only(['index', 'update', 'destroy']);
