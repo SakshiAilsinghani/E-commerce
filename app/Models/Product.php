@@ -5,12 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Transformers\ProductTransformer;
 
 class Product extends Model
 {
     use HasFactory,SoftDeletes;
     const UNAVAILABLE_PRODUCT = 0;
     const AVAILABLE_PRODUCT = 1;
+
+    public $transformer = ProductTransformer::class;
 
     protected $hidden = [
         'deleted_at',
