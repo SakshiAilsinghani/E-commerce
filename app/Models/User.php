@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Sanctum\HasApiTokens;
+use App\Transformers\UserTransformer;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 class User extends Authenticatable
@@ -20,6 +21,8 @@ class User extends Authenticatable
 
     const VERIFIED_USER = true;
     const UNVERIFIED_USER = false;
+
+    public $transformer = UserTransformer::class;
 
     const ADMIN_USER = true;
     CONST REGULAR_USER = false;

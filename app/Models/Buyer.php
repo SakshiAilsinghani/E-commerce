@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Transformers\BuyerTransformer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Scopes\BuyerScope;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +14,8 @@ class Buyer extends User
     protected $hidden = [
         'deleted_at',
     ];
+
+    public $transformer = BuyerTransformer::class;
 
 
     protected static function boot()
