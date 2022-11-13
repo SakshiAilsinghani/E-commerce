@@ -46,4 +46,23 @@ class ProductTransformer extends TransformerAbstract
         ];
     }
 
+    public static function attributeMapper(string $key): ?string
+    {
+        $attributes = [
+            'identifier' => 'id',
+            'title' => 'name',
+            'details' => 'description',
+            'stock' => 'quantity',
+            'status' => 'status',
+            'picture' => 'image',
+            'seller' => 'seller_id',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'deletedDate' => 'deleted_at',
+        ];
+
+        return $attributes[$key] ?? null;
+    }
+
+
 }

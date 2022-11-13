@@ -42,4 +42,19 @@ class CategoryTransformer extends TransformerAbstract
         ];
     }
 
+    public static function attributeMapper(string $key): ?string
+    {
+        $attributes = [
+            'identifier' => 'id',
+            'title' => 'name',
+            'details' => 'description',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'deletedDate' => 'deleted_at',
+        ];
+
+        return $attributes[$key] ?? null;
+    }
+
+
 }

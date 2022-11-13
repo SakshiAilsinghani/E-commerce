@@ -43,4 +43,20 @@ class TransactionTransformer extends TransformerAbstract
         ];
     }
 
+    public static function attributeMapper(string $key): ?string
+    {
+        $attributes = [
+            'identifier' => 'id',
+            'quantity' => 'quantity',
+            'buyer' => 'buyer_id',
+            'product' => 'product_id',
+            'creationDate' => 'created_at',
+            'lastChange' => 'updated_at',
+            'deletedDate' => 'deleted_at',
+        ];
+
+        return $attributes[$key] ?? null;
+    }
+
+
 }
