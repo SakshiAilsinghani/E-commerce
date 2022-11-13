@@ -9,11 +9,13 @@ use Illuminate\Http\Request;
 
 class CategoriesController extends  ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+    public function __construct()
+    {
+        $this->middleware('transform.input:' . CategoryTransformer::class)->only(['store', 'update']);
+    }
+
+    
     public function index() :JsonResponse
     {
         $categories= Category::all();
