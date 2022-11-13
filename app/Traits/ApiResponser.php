@@ -23,6 +23,7 @@ trait ApiResponser
         }
 
         $transformer = $collection->first()->transformer;
+        $collection = $this->sort($collection, $transformer);
         $collection = $this->transformData($collection, $transformer);
 
         $responseParams = ['data' => $collection, 'count' => $collection->count()];
@@ -48,6 +49,21 @@ trait ApiResponser
         $transformation = fractal($data, new $transformer);
         return collect($transformation->toArray()['data']);
     }
+
+    private function sort(Collection $collection, $transformer): Collection
+    {
+        if(request()->has('sort_by')) {
+            $transformedAttribute = request()->sort_by;
+            $sortAttribute = $transformer::attributeMapper($transformedAttribute);
+            if(request()->has('order_by') && request()->order_by === 'desc') {
+                $collection = $collection->sortByDesc($sortAttribute);
+            } else {
+                $collection = $collection->sortBy($sortAttribute);
+            }
+        }
+        return $collection;
+    }
+
 
 
 }
