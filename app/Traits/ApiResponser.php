@@ -23,6 +23,7 @@ trait ApiResponser
         }
 
         $transformer = $collection->first()->transformer;
+        $collection = $this->filterData($collection, $transformer);
         $collection = $this->sort($collection, $transformer);
         $collection = $this->transformData($collection, $transformer);
 
@@ -50,6 +51,19 @@ trait ApiResponser
         return collect($transformation->toArray()['data']);
     }
 
+    private function filterData(Collection $collection, $transformer): Collection
+    {
+        foreach(request()->query() as $key => $value) {
+            $actualAttribute = $transformer::attributeMapper($key);
+            if(isset($actualAttribute, $value)) {
+                $collection = $collection->where($actualAttribute, $value);
+            }
+        }
+
+        return $collection;
+    }
+
+
     private function sort(Collection $collection, $transformer): Collection
     {
         if(request()->has('sort_by')) {
@@ -63,6 +77,8 @@ trait ApiResponser
         }
         return $collection;
     }
+
+    
 
 
 
