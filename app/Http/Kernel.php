@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http;
-
+use App\Http\Middleware\CacheResponser;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 use App\Http\Middleware\HeaderSignatureMiddleware;
 
@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            CacheResponser::class,
             'signature:X-Application-Name',
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:10,1',
