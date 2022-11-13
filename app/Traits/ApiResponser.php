@@ -3,7 +3,10 @@ namespace App\Traits;
 
 
 use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Support\Facades\Validator;
 
 trait ApiResponser
 {
@@ -25,9 +28,15 @@ trait ApiResponser
         $transformer = $collection->first()->transformer;
         $collection = $this->filterData($collection, $transformer);
         $collection = $this->sort($collection, $transformer);
+
+
+        $total = $collection->count();
+
+        $collection = $this->paginate($collection);
+
         $collection = $this->transformData($collection, $transformer);
 
-        $responseParams = ['data' => $collection, 'count' => $collection->count()];
+        $responseParams = ['data' => $collection, 'count' =>$total];
         return $this->successResponse($responseParams, $statusCode);
     }
     protected function showOne(Model $model, $statusCode = 200)
@@ -77,6 +86,33 @@ trait ApiResponser
         }
         return $collection;
     }
+
+    private function paginate(Collection $collection)
+    {
+        $rules = [
+            'per_page' => 'integer|min:10|max:100'
+        ];
+
+        Validator::validate(request()->all(), $rules);
+
+        $page = LengthAwarePaginator::resolveCurrentPage();
+        $elementsPerPage = 15; // Default Page Size
+
+        // Update elements per page if there is querystring present!
+        if(request()->has('per_page')) {
+            $elementsPerPage = (int)request()->per_page;
+        }
+
+        $results = $collection->slice($elementsPerPage*($page-1), $elementsPerPage)->values();
+
+        $options = [
+            'page' => LengthAwarePaginator::resolveCurrentPath()
+        ];
+        $paginator = new LengthAwarePaginator($results, $collection->count(), $elementsPerPage, $page, $options);
+        $paginator->appends(request()->all());
+        return $paginator;
+    }
+
 
     
 
