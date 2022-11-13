@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\ApiController;
+use App\Transformers\CategoryTransformer;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class CategoriesController extends  ApiController
         $this->middleware('transform.input:' . CategoryTransformer::class)->only(['store', 'update']);
     }
 
-    
+
     public function index() :JsonResponse
     {
         $categories= Category::all();
